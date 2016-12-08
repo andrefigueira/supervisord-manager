@@ -168,6 +168,7 @@ return [
          */
 
         Barryvdh\Debugbar\ServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         //
 

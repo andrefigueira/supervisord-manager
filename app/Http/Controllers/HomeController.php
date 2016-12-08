@@ -29,24 +29,22 @@ class HomeController extends Controller
         try {
             return view('home');
 
-            $process = Supervisord::call(Supervisord::GET_PROCESS_INFO, [
-                'name' => 'test',
-            ]);
-
-            dd($process);
-
-            $logLength = filesize($process['stdout_logfile']);
-
-            dd(Supervisord::call(Supervisord::READ_PROCESS_STD_OUT_LOG, [
-                'name' => 'test',
-                'offset' => $logLength,
-                'length' => 9000000
-            ]));
-
+//            $process = Supervisord::call(Supervisord::GET_ALL_CONFIG_INFO);
+////
+//            dd($process);
+//
+//            $logLength = filesize($process['stdout_logfile']);
+//
+//            dd(Supervisord::call(Supervisord::READ_PROCESS_STD_OUT_LOG, [
+//                'name' => 'test',
+//                'offset' => $logLength,
+//                'length' => 9000000
+//            ]));
+//
             dd(Supervisord::call(Supervisord::GET_ALL_PROCESS_INFO));
 
             dd(Supervisord::call(Supervisord::SYSTEM_METHOD_HELP, [
-                'name' => Supervisord::TAIL_PROCESS_LOG,
+                'name' => Supervisord::GET_ALL_PROCESS_INFO,
             ]));
 
         } catch (\Exception $exception) {

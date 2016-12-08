@@ -16,18 +16,20 @@ require('./bootstrap');
 const app = new Vue({
     el: '#app',
     data: {
+        supervisordState: false,
         process: false,
-        processes: []
+        processes: [],
+        apiToken: 'password'
     },
     methods: {
-        processAction(processName, action) {
+        processAction(groupName, action) {
             let self = this;
 
             $.ajax({
-                url: '/api/supervisord/process?api_token=password',
+                url: '/api/supervisord/process?api_token=' + self.apiToken,
                 method: 'POST',
                 data: {
-                    processName: processName,
+                    groupName: groupName,
                     action: action
                 },
                 success: function (result) {
@@ -52,7 +54,7 @@ const app = new Vue({
 
             if (typeof self.process.name !== 'undefined') {
                 $.ajax({
-                    url: '/api/supervisord/process/tail/' + self.process.name + '?api_token=password',
+                    url: '/api/supervisord/process/tail/' + self.process.group + ':' + self.process.name + '?api_token=' + self.apiToken,
                     method: 'GET',
                     success: function (result) {
                         if (result.success) {
@@ -70,7 +72,7 @@ const app = new Vue({
             let self = this;
 
             $.ajax({
-                url: '/api/supervisord/process?api_token=password',
+                url: '/api/supervisord/process?api_token=' + self.apiToken,
                 method: 'GET',
                 success: function (result) {
                     if (result.success) {
@@ -78,9 +80,23 @@ const app = new Vue({
                     }
                 }
             });
+        },
+        loadSupervisordState() {
+            let self = this;
+
+            $.ajax({
+                url: '/api/supervisord/state?api_token=' + self.apiToken,
+                method: 'GET',
+                success: function (result) {
+                    if (result.statecode) {
+                        self.supervisordState = result;
+                    }
+                }
+            });
         }
     },
     mounted() {
         this.loadProcesses();
+        this.loadSupervisordState();
     }
 });

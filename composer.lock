@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ef07d318e2a4c606645993dca6114b4a",
-    "content-hash": "cd39821c78db6dafa1b2cb36a47c9168",
+    "hash": "439bcd227b3017e5f692b6b6cfbd643b",
+    "content-hash": "5b09b0ab352d992c17322b9637479b63",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -361,6 +361,58 @@
             "time": "2014-08-17 21:15:53"
         },
         {
+            "name": "indigophp/ini",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/indigophp/ini.git",
+                "reference": "182167ee30280b8f875aac252d6c8334f4d9aec2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/indigophp/ini/zipball/182167ee30280b8f875aac252d6c8334f4d9aec2",
+                "reference": "182167ee30280b8f875aac252d6c8334f4d9aec2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.5"
+            },
+            "require-dev": {
+                "coduo/phpspec-data-provider-extension": "^1.0",
+                "henrikbjorn/phpspec-code-coverage": "^1.0",
+                "phpspec/phpspec": "^2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Indigo\\Ini\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
+                }
+            ],
+            "description": "Provides better INI parsing and rendering",
+            "homepage": "http://indigophp.com",
+            "keywords": [
+                "ini",
+                "parser",
+                "renderer"
+            ],
+            "time": "2016-01-04 01:21:08"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -504,6 +556,49 @@
                 "tokenizer"
             ],
             "time": "2016-12-07 09:37:55"
+        },
+        {
+            "name": "laracasts/flash",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/flash.git",
+                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Flash": "src/"
+                },
+                "files": [
+                    "src/Laracasts/Flash/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2016-07-11 20:46:02"
         },
         {
             "name": "laravel/framework",
@@ -1589,6 +1684,62 @@
             "time": "2016-11-22 19:21:44"
         },
         {
+            "name": "supervisorphp/configuration",
+            "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/supervisorphp/configuration.git",
+                "reference": "50b8def64decd0fd9e7b7af1062352e6ec420733"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/supervisorphp/configuration/zipball/50b8def64decd0fd9e7b7af1062352e6ec420733",
+                "reference": "50b8def64decd0fd9e7b7af1062352e6ec420733",
+                "shasum": ""
+            },
+            "require": {
+                "indigophp/ini": "^0.2",
+                "league/flysystem": "^1.0",
+                "php": ">=5.4",
+                "symfony/options-resolver": "^2.6|^3.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "^1.0",
+                "phpspec/phpspec": "^2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Supervisor\\Configuration\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
+                }
+            ],
+            "description": "Manage Supervisor configuration in PHP",
+            "homepage": "http://supervisorphp.com",
+            "keywords": [
+                "configuration",
+                "supervisor"
+            ],
+            "time": "2016-05-08 22:49:50"
+        },
+        {
             "name": "supervisorphp/supervisor",
             "version": "v3.0.0",
             "source": {
@@ -2062,6 +2213,60 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
             "time": "2016-11-21 02:44:20"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "45940bcad6388b3b6058107eca67ced738d205bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/45940bcad6388b3b6058107eca67ced738d205bb",
+                "reference": "45940bcad6388b3b6058107eca67ced738d205bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2016-05-13 18:13:23"
         },
         {
             "name": "symfony/polyfill-mbstring",

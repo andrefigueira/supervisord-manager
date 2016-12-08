@@ -15,3 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/documentation', 'SupervisordController@documentation');
+Route::get('/config', 'SupervisordConfigController@view');
+Route::get('/config/create', 'SupervisordConfigController@create');
+Route::post('/config/save', 'SupervisordConfigController@save');

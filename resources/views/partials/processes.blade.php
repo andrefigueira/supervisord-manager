@@ -17,8 +17,8 @@
             <td><span :class="'label ' + process.label">@{{ process.statename }}</span></td>
             <td>@{{ process.startdate }}</td>
             <td>
-                <button v-if="process.statename == 'RUNNING'" :id="process.name + '-stop'" class="btn btn-danger btn-xs" @click="processAction(process.name, 'stop')"><i class="fa fa-stop" aria-hidden="true"></i></button>
-                <button v-if="process.statename == 'STOPPED'" :id="process.name + '-start'" class="btn btn-success btn-xs" @click="processAction(process.name, 'start')"><i class="fa fa-play" aria-hidden="true"></i></button>
+                <button v-if="process.statename == 'RUNNING'" :id="process.name + '-stop'" class="btn btn-danger btn-xs" @click="processAction(process.group, 'stop')"><i class="fa fa-stop" aria-hidden="true"></i></button>
+                <button v-if="process.statename == 'STOPPED'" :id="process.name + '-start'" class="btn btn-success btn-xs" @click="processAction(process.group, 'start')"><i class="fa fa-play" aria-hidden="true"></i></button>
                 <button class="btn btn-info btn-xs" @click="viewProcess(process)"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </td>
         </tr>

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Exception;
+use ReflectionClass;
 use Zend\Http\Client as HttpClient;
 use Zend\XmlRpc\Client as XmlRpcClient;
 
@@ -84,6 +85,11 @@ class Supervisord
         }
     }
 
+    /**
+     * @param $rpc
+     * @param array $params
+     * @return array
+     */
     public static function call($rpc, array $params = [])
     {
         if (!self::$prepared) {
@@ -91,5 +97,15 @@ class Supervisord
         }
 
         return self::$xmlRpcClient->call($rpc, $params);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getConstants()
+    {
+        $supervisord = new ReflectionClass(__CLASS__);
+
+        return $supervisord->getConstants();
     }
 }

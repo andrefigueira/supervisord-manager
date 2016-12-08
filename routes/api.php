@@ -21,4 +21,5 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/supervisord/process', 'SupervisordController@process');
     Route::get('/supervisord/process', 'SupervisordController@processList');
     Route::get('/supervisord/process/tail/{processName}', 'SupervisordController@tail');
+    Route::get('/supervisord/state', 'SupervisordController@state');
 });

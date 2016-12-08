@@ -103,3 +103,24 @@ function follow($file)
         $size = $currentSize;
     }
 }
+
+function iniFromArray(array $a, array $parent = [])
+{
+    $out = '';
+    foreach ($a as $k => $v) {
+        if (is_array($v)) {
+            //subsection case
+            //merge all the sections into one array...
+            $sec = array_merge((array)$parent, (array)$k);
+            //add section information to the output
+            $out .= '[' . join('.', $sec) . ']' . PHP_EOL;
+            //recursively traverse deeper
+            $out .= iniFromArray($v, $sec);
+        } else {
+            //plain key->value case
+            $out .= "$k=$v" . PHP_EOL;
+        }
+    }
+
+    return $out;
+}

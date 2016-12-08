@@ -12,7 +12,9 @@
         "lstrojny/fxmlrpc": "^0.13.0",
         "zendframework/zend-xmlrpc": "^2.6",
         "php-http/httplug": "^1.1",
-        "barryvdh/laravel-debugbar": "^2.3"
+        "barryvdh/laravel-debugbar": "^2.3",
+        "supervisorphp/configuration": "^0.2.1",
+        "laracasts/flash": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -42,8 +42,9 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav" v-cloak>
+                        <li v-if="supervisordState"><a><span class="label label-success">@{{ supervisordState.statename }}</span></a></li>
+                        <li v-if="!supervisordState"><a><span class="label label-danger">STOPPED</span></a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,6 +60,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/config') }}">Config</a></li>
+                                    <li><a href="{{ url('/documentation') }}">Documentation</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -77,6 +80,8 @@
                 </div>
             </div>
         </nav>
+
+        @include('flash::message')
 
         @yield('content')
     </div>

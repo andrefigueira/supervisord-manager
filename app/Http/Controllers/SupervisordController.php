@@ -21,31 +21,34 @@ class SupervisordController extends Controller
     public function process(Request $request)
     {
         $action = $request->get('action');
-        $processName = $request->get('processName');
+        $groupName = $request->get('groupName');
 
         switch ($action) {
             case 'start':
-                $actionType = Supervisord::START_PROCESS;
+                $actionType = Supervisord::START_PROCESS_GROUP;
                 break;
 
             case 'stop':
-                $actionType = Supervisord::STOP_PROCESS;
+                $actionType = Supervisord::STOP_PROCESS_GROUP;
                 break;
+
+            default:
+                $actionType = Supervisord::STOP_PROCESS_GROUP;
         }
 
         $success = Supervisord::call($actionType, [
-            'name' => $processName,
+            'group:name' => $groupName,
         ]);
 
         $result = [
             'success' => false,
-            'message' => 'Failed to start ' . $processName,
+            'message' => 'Failed to start ' . $groupName,
         ];
 
         if ($success) {
             $result = [
                 'success' => true,
-                'message' => sprintf('Action processed (%s): for program (%s)', $actionType, $processName),
+                'message' => sprintf('Action processed (%s): for program (%s)', $actionType, $groupName),
                 'result' => $success,
             ];
         }
@@ -53,6 +56,9 @@ class SupervisordController extends Controller
         return $result;
     }
 
+    /**
+     * @return array
+     */
     public function processList()
     {
         try {
@@ -140,5 +146,40 @@ class SupervisordController extends Controller
         }
 
         return $result;
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function documentation()
+    {
+        $availableCalls = Supervisord::getConstants();
+        $documentation = [];
+
+        foreach ($availableCalls as $constant => $rpcMethod) {
+            $result = Supervisord::call(Supervisord::SYSTEM_METHOD_HELP, [
+                'name' => $rpcMethod,
+            ]);
+
+            $documentation[$rpcMethod] = nl2br($result);
+        }
+
+        return view('documentation', ['documentation' => $documentation]);
+    }
+
+    /**
+     * Get the current state of Supervisord
+     *
+     * @return array
+     */
+    public function state()
+    {
+        try {
+            $state = Supervisord::call(Supervisord::GET_STATE);
+
+            return $state;
+        } catch (Exception $exception) {
+            // @todo: Log error somehow
+        }
     }
 }
